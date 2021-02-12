@@ -20,7 +20,10 @@ let divSelection = d3.select("#viz")
 .enter()
 .append("div")
 .attr("class", "bar")
-.style("width", (d) => {return d.deaths * 8 + "px"});
+.style("width", (d) => {return d.deaths * 8 + "px"})
+.on("mouseover", (d,i) => { toggleClass((i+1), true)})
+.on("mouseout", (d,i) => { toggleClass((i+1), false)})
+;
 
 
 let listSelection = d3.select("#legend")
@@ -28,8 +31,10 @@ let listSelection = d3.select("#legend")
 .data(climate_daly_data)
 .enter()
 .append("li")
-.text( (d) => { return d.region + ": " + d.deaths + " deaths"; });
-
+.text( (d) => { return d.region + ": " + d.deaths + " deaths"; })
+.on("mouseover", (d,i) => { toggleClass((i+1), true)})
+.on("mouseout", (d,i) => { toggleClass((i+1), false)})
+;
 
 
 
