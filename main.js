@@ -13,3 +13,25 @@ let toggleClass = (i,toggle) => {
 d3.select("#viz div:nth-child("+ i +")").classed("highlightBar",toggle);
 d3.select("#legend li:nth-child("+ i +")").classed("highlightText",toggle);
 };
+
+let divSelection = d3.select("#viz")
+.selectAll("div")
+.data(climate_daly_data)
+.enter()
+.append("div")
+.attr("class", "bar")
+.style("width", (d) => {return d.deaths * 8 + "px"});
+
+
+let listSelection = d3.select("#legend")
+.selectAll("li")
+.data(climate_daly_data)
+.enter()
+.append("li")
+.text( (d) => { return d.region + ": " + d.deaths + " deaths"; });
+
+
+
+
+
+
